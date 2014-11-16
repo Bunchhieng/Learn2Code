@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+        Author: Bunchhieng Soth
+        Created on: 11/15/2014 
+        -->
+    <title>Learn2Code</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+            $("#h4").click(function (e) {
+                $("#toggle1").toggle();
+                e.preventDefault();
+            });
+            $("#h5").click(function (e) {
+                $("#toggle2").toggle();
+                e.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="menu">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="assignment.html">Assignments</a>
+        </nav>
+    </div>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Learn to Code with C Programming</h1>
+        </div>
+        <div id="content">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Week 1</a>
+                    </li>
+                    <li><a href="#tabs-2">Week 2</a>
+                    </li>
+                    <li><a href="#tabs-3">Week 3</a>
+                    </li>
+                </ul>
+                <div id="tabs-1">
+                    <h3>Introduction to Computer and C programming</h3>
+                    <p style="font-size:17px">November 17th 2014</p>
+                    <a href="" id="h4" class="h4"><h3>What is programming language?</h3></a>
+                    <div id="toggle1" class="toggle" style="display:none">
+                        <br>
+                        <p style="text-align:left">Like a natural language, you learn English and its grammar to properly communicate with English speaking people.
+                            <br>In computer language, you learn a programming language and it's grammar and syntax to properly talk to a not very intelligent hardware. You write instruction codes in English like words that human can easily understand and the programming language will have tools to convert it to a lower level that the hardware can understand.</p>
+                    </div>
+                    <a href="" id="h5" class="h4"><h3>What is C programming?</h3></a>
+                    <div id="toggle2" class="toggle" style="display:none">
+                        <br>
+                        <p style="text-align:left">The C programming language is a general purpose programming language, which relates closely to the way machines work. Understanding how computer memory works is an important aspect of the C programming language. Although C can be considered as "hard to learn", C is in fact a very simple language, with very powerful capabilities.
+                            <br>
+                            <br>C is a very common language, and it is the language of many applications such as Windows, the Python interpreter, Git, and many many more.
+                            <br>
+                            <br>C is a compiled language - which means that in order to run it, the compiler (for example, GCC or Visual Studio) must take the code that we wrote, process it, and then create an executable file. This file can then be executed, and will do what we intended for the program to do.</p>
+                    </div>
+                    <h3>Installation for Mac and Window</h3>
+                    <div>
+                        <br>
+                        <p style="text-align:left">The very first thing you need to do, before starting out in C, is to make sure that you have a compiler. What is a compiler, you ask?
+                            <br>A compiler turns the program that you write into an executable that your computer can actually understand and run.
+                            <br>For mac user: you must now manually install command line tools from Xcode <code>menu > Preferences > Downloads</code>.
+                            <br>
+                            <img src="img/C7wOI.png" alt="">
+                        </p>
+                        <p>For text editor, We are going to use <a href="http://macromates.com/">TextMate.</a>
+                        </p>
+                    </div>
+                    <h3>First program - Hello world!</h3>
+                    <div>
+                        <pre class="example">
+                        #include &lt;stdio.h&gt;
+                        /**
+                         * Every C programming starts with main function
+                         * and always return 0 at the end.
+                         */
+                        int main(int argc, char * argv[])
+                        {
+                            // The printf function display "Hello world!" to the screen
+                            printf( "Hello world\n" );
+    
+                            return 0;
+                        }
+                        </pre>
+                        
+                        <pre class="example">
+                        Compile your code with gcc:
+                        $ gcc -g -Wall helloWorld.c -o helloWorld
+                        Then run it:
+                        $ ./helloWorld
+                        </pre>
+                    </div>
+                </div>
+                <div id="tabs-2">
+                </div>
+                <div id="tabs-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
