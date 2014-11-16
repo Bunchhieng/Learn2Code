@@ -37,7 +37,7 @@ body {
 }
 #header,
 #tabs {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     text-align: center;
 }
@@ -80,6 +80,6 @@ footer {
     margin-bottom: 20px;
     padding: 10px;
     clear: both;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 }
