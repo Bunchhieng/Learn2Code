@@ -8,20 +8,53 @@
         Created on: 11/15/2014 
         -->
     <title>Learn2Code</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="codemirror-4.7/lib/codemirror.js"></script>
+    <script src="codemirror-4.7/mode/clike/clike.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="codemirror-4.7/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror-4.7/theme/monokai.css">
+    
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* Style code editors on the details view.
+      /* Autoresize code from http://codemirror.net/demo/resize.html */
+        .CodeMirror {
+            font-family: monospace;
+            border: 1px solid #eee;
+            height: auto;
+            font-size: 1.3em;
+        }
+        .CodeMirror-scroll {
+            height: auto;
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+        
+    </style>
     <script>
         $(function () {
             $("#tabs").tabs();
-            $("#h4").click(function (e) {
+            $("#h4 ").click(function (e) {
                 $("#toggle1").toggle();
                 e.preventDefault();
             });
             $("#h5").click(function (e) {
                 $("#toggle2").toggle();
                 e.preventDefault();
+            });
+
+            // Add codemirror to each text area with class c-code
+            var cEditor = '';
+            $('.c-code').each(function (index) {
+                $(this).attr('id', 'code-' + index);
+                CodeMirror.fromTextArea(document.getElementById('code-' + index), {
+                    mode: "text/x-csrc",
+                    matchBrackets: true,
+                    lineNumbers: true,
+                    theme: 'monokai'
+                });
             });
         });
     </script>
@@ -57,9 +90,38 @@
                             <br>Age and height are input, respectively. Then print it out to screen.</li>
                         <li>What is the output of the following code?
                             <br>
-                            <pre class="c" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #339933;">#include &lt;stdio.h&gt;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #993333;">int</span> main<span style="color: #009900;">&#40;</span><span style="color: #993333;">int</span> argc<span style="color: #339933;">,</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>argv<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> a <span style="color: #339933;">=</span> <span style="color: #0000dd;">3</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> b <span style="color: #339933;">=</span> <span style="color: #0000dd;">4</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> c <span style="color: #339933;">=</span> <span style="color: #0000dd;">20</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> d <span style="color: #339933;">=</span> <span style="color: #0000dd;">13</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> result <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>a <span style="color: #339933;">+</span> b <span style="color: #339933;">+</span> c <span style="color: #339933;">+</span> d<span style="color: #009900;">&#41;</span><span style="color: #339933;">/</span><span style="color: #0000dd;">4</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066;">printf</span><span style="color: #009900;">&#40;</span><span style="color: #ff0000;">&quot;%d<span style="color: #000099; font-weight: bold;">\n</span>&quot;</span><span style="color: #339933;">,</span> result<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                            <textarea name="" class="c-code" cols="30" rows="10">
+                                #include &lt;stdio.h>
+                                
+                                int main(int argc, char *argv[]) {
+                                    
+                                    int a = 4;
+                                    int b = 5;
+                                    int c = 10;
+                                    int d = 21;
+                                    
+                                    int result = (a + b + c + d)/4;
+                                    
+                                    printf("%d\n", result);
+                                    
+                                    return 0;
+                                }
+                            </textarea>
                         </li>
-                        <li><pre class="c" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #339933;">#include &lt;stdio.h&gt;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #339933;">#define ONE 5</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #339933;">#define TWO 10</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #993333;">int</span> main<span style="color: #009900;">&#40;</span><span style="color: #993333;">int</span> argc<span style="color: #339933;">,</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>argv<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #993333;">int</span> three <span style="color: #339933;">=</span> ONE <span style="color: #339933;">+</span> TWO<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066;">printf</span><span style="color: #009900;">&#40;</span><span style="color: #ff0000;">&quot;%d<span style="color: #000099; font-weight: bold;">\n</span>&quot;</span><span style="color: #339933;">,</span> three<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li></ol></pre>
+                        <li><br>
+                            <textarea name="" id="" cols="30" rows="10" class="c-code">
+                                #include <stdio.h>
+                                
+                                #define ONE 5
+                                #define TWO 10
+                                
+                                int main(int argc, char *argv[]) {
+                                
+                                    printf("%d\n", ONE + TWO);
+                                    
+                                    return 0;
+                                }
+                            </textarea>
                         </li>
                     </ol>
 

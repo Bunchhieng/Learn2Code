@@ -8,14 +8,36 @@
         Created on: 11/15/2014 
         -->
     <title>Learn2Code</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="codemirror-4.7/lib/codemirror.js"></script>
+    <script src="codemirror-4.7/mode/clike/clike.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="codemirror-4.7/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror-4.7/theme/monokai.css">
+    
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* Style code editors on the details view.
+      /* Autoresize code from http://codemirror.net/demo/resize.html */
+        .CodeMirror {
+            font-family: monospace;
+            text-align: left;
+            border: 1px solid #eee;
+            height: auto;
+            font-size: 1.3em;
+        }
+        .CodeMirror-scroll {
+            height: auto;
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+        
+    </style>
     <script>
         $(function () {
             $("#tabs").tabs();
-            $("#h4").click(function (e) {
+            $("#h4 ").click(function (e) {
                 $("#toggle1").toggle();
                 e.preventDefault();
             });
@@ -23,12 +45,23 @@
                 $("#toggle2").toggle();
                 e.preventDefault();
             });
+
+            // Add codemirror to each text area with class c-code
+            var cEditor = '';
+            $('.c-code').each(function (index) {
+                $(this).attr('id', 'code-' + index);
+                CodeMirror.fromTextArea(document.getElementById('code-' + index), {
+                    mode: "text/x-csrc",
+                    matchBrackets: true,
+                    lineNumbers: true,
+                    theme: 'monokai'
+                });
+            });
         });
     </script>
 </head>
 
 <body>
-   <div id="image"><img src="img/sos-orange-logo-head.png" alt="group" id="group"></div>
     <div id="menu">
         <nav>
             <a href="index.html">Home</a>
@@ -82,55 +115,27 @@
                         </p>
                     </div>
                     <h3>First program - Hello world!</h3>
-                    <div>
-                        <!-- HTML generated using hilite.me -->
-                        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;text-align:left">
-                            <table>
-                                <tr>
-                                    <td><pre style="margin: 0; line-height: 125%">1
-2
-3
-4
-5
-6
-7</pre>
-                                    </td>
-                                    <td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;stdio.h&gt;</span>
+                    
 
-<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>(<span style="color: #333399; font-weight: bold">int</span> argc, <span style="color: #333399; font-weight: bold">char</span> <span style="color: #333333">*</span> argv[]) {
-
-    printf(<span style="background-color: #fff0f0">&quot;Hello world!</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>);
-    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
-}
-</pre>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-
-
-                        <!-- HTML generated using hilite.me -->
-                        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;text-align:left">
-                            <table>
-                                <tr>
-                                    <td><pre style="margin: 0; line-height: 125%">1
-2
-3
-4
-5</pre>
-                                    </td>
-                                    <td><pre style="margin: 0; line-height: 125%">Compile your code with gcc<span style="color: #333333">:</span>
- <span style="color: #FF0000; background-color: #FFAAAA">$</span> gcc <span style="color: #333333">-</span>g <span style="color: #333333">-</span>Wall helloWorld.c <span style="color: #333333">-</span>o helloWorld
-
-Run it<span style="color: #333333">:</span>
-<span style="color: #FF0000; background-color: #FFAAAA">$</span> .<span style="color: #333333">/</span>helloWorld
-</pre>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-
-                    </div>
+                        <textarea class="c-code">
+                           Save this file as helloWorld.c
+                           
+                            #include &lt;stdio.h&gt;
+                            
+                            int main(int argc, char *argv[]) {
+                                
+                                printf("Hello world!\n);
+                                
+                                return 0;
+                            }
+                        </textarea>
+                        <textarea class="c-code">
+                           Compile your code with GCC:
+                           $ gcc helloWorld.c -o helloWorld
+                           
+                           Run it with:
+                           $ ./helloWorld
+                        </textarea>
                 </div>
                 <div id="tabs-2">
                 </div>
