@@ -51,45 +51,66 @@
                         <li>What is the output of the following code?
                             <br>
                             <textarea name="" class="c-code" cols="30" rows="10">
-                                #include &lt;stdio.h>
+#include &lt;stdio.h>
                                 
-                                int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
                                     
-                                    int a = 4;
-                                    int b = 5;
-                                    int c = 10;
-                                    int d = 21;
+    int a = 4;
+    int b = 5;
+    int c = 10;
+    int d = 21;
                                     
-                                    int result = (a + b + c + d)/4;
+    int result = (a + b + c + d)/4;
                                     
-                                    printf("%d\n", result);
+    printf("%d\n", result);
                                     
-                                    return 0;
-                                }
+    return 0;
+}
                             </textarea>
                         </li>
                         <li><br>
                             <textarea name="" id="" cols="30" rows="10" class="c-code">
-                                #include &lt;stdio.h>
+#include &lt;stdio.h>
                                 
-                                #define ONE 5
-                                #define TWO 10
+#define ONE 5
+#define TWO 10
                                 
-                                int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
                                 
-                                    printf("%d\n", ONE + TWO);
+    printf("%d\n", ONE + TWO);
                                     
-                                    return 0;
-                                }
+    return 0;
+}
                             </textarea>
                         </li>
                     </ol>
 
                 </div>
                 <div id="tabs-2">
-                <ol>
+                <ol style="text-align:left">
                     <li>Calculate an area of a circle by taking an integer (radius) from user input. We know that: <pre>pi = 3.14</pre> and <pre>Area of circle = radius*pi*pi;</pre></li>
                     <li>Given two integers <pre>int num1 = 2014;</pre> and <pre>int num2 = 2018;</pre> Compare these two numbers using <pre>if statement</pre> then print out the biggest number, otherwise print out the smallest number.</li>
+                    <li> What is the output of this program?
+                        <textarea class="c-code">
+#include &lt;stdio.h>
+
+int main(int argc, char *argv[])
+{
+   int n = 4, m = 5;
+
+   // if statement evaluate true or false
+   if (n + m < 8) {
+      printf("%d\n", n+m);
+   }
+   else {
+      printf("%d\n", n);
+   }
+
+   return 0;
+}
+
+                        </textarea>
+                    </li>
                 </ol>
                 </div>
             </div>
