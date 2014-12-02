@@ -74,8 +74,6 @@
                         </p>
                     </div>
                     <h3>First program - Hello world!</h3>
-
-                    <div>
                     <textarea class="c-code">
                         Save this file as helloWorld.c 
                         #include &lt;stdio.h&gt; 
@@ -90,9 +88,36 @@
                         $ gcc helloWorld.c -o helloWorld 
                         Run it with: $ ./helloWorld
                     </textarea>
-                    </div>
                 </div>
                 <div id="tabs-2">
+                    <h3>Variables, Some Math and Arrays</h3>
+                    <p style="font-size:17px">December 2nd 2014</p>
+                    <textarea class="c-code">
+#include &lt;stdio.h&gt;
+
+/**
+ * This is main function
+ */
+int main(int argc, char *argv[])
+{
+   /* We initialize integer width with value 300
+    * and height with value 100
+    */
+   int width = 300;
+   int  height = 100;
+
+   int parameter;
+   int area;
+
+   // Display parameter and area of the rectangle
+   // \n is an escape sequence for new line
+   printf("The parameter of the rectangle is %d. \n", (width+height)*2);
+   printf("The area of the rectangle is %d. \n", width*height);
+   // A return from the main function
+   // 0 is false, others is true
+   return 0;
+}
+                    </textarea>
                 </div>
                 <div id="tabs-3">
                 </div>
