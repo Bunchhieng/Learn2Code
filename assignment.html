@@ -12,52 +12,12 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="codemirror-4.7/lib/codemirror.js"></script>
     <script src="codemirror-4.7/mode/clike/clike.js" type="text/javascript"></script>
+    <script src="js/main.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="codemirror-4.7/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror-4.7/theme/monokai.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="icon" href="img/signature_icon_code4ward-2.png">
-    <style>
-        /* Style code editors on the details view.
-      /* Autoresize code from http://codemirror.net/demo/resize.html */
-        .CodeMirror {
-            font-family: monospace;
-            border: 1px solid #eee;
-            height: auto;
-            font-size: 1.3em;
-        }
-        .CodeMirror-scroll {
-            height: auto;
-            overflow-y: hidden;
-            overflow-x: hidden;
-        }
-        
-    </style>
-    <script>
-        $(function () {
-            $("#tabs").tabs();
-            $("#h4 ").click(function (e) {
-                $("#toggle1").toggle();
-                e.preventDefault();
-            });
-            $("#h5").click(function (e) {
-                $("#toggle2").toggle();
-                e.preventDefault();
-            });
-
-            // Add codemirror to each text area with class c-code
-            var cEditor = '';
-            $('.c-code').each(function (index) {
-                $(this).attr('id', 'code-' + index);
-                CodeMirror.fromTextArea(document.getElementById('code-' + index), {
-                    mode: "text/x-csrc",
-                    matchBrackets: true,
-                    lineNumbers: true,
-                    theme: 'monokai'
-                });
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -70,7 +30,7 @@
         </nav>
     </div>
     <div id="wrapper">
-        <div id="header">
+        <div class="header">
             <h1>Learn to Code with C Programming</h1>
         </div>
         <div id="content">
@@ -110,7 +70,7 @@
                         </li>
                         <li><br>
                             <textarea name="" id="" cols="30" rows="10" class="c-code">
-                                #include <stdio.h>
+                                #include &lt;stdio.h>
                                 
                                 #define ONE 5
                                 #define TWO 10
@@ -126,8 +86,37 @@
                     </ol>
 
                 </div>
+                <div id="tabs-2">
+            <textarea class="c-code" style="text-align:left">
+                #include &lt;stdio.h>
+
+                int main(int argc, char *argv[])
+                {
+                    int bugs = 100;
+                    double bug_rate = 1.2;
+
+                    printf("You have %d bugs at the imaginary rate of %f.\n",
+                    bugs, bug_rate);
+
+                    long universe_of_defects = 1L * 1024L * 1024L * 1024L;
+                    printf("The entire universe has %ld bugs.\n",
+                    universe_of_defects);
+
+                    double expected_bugs = bugs * bug_rate;
+                    printf("You are expected to have %f bugs.\n", expected_bugs);
+
+                    double part_of_universe = expected_bugs / universe_of_defects;
+                    printf("That is only a %e portion of the universe.\n", part_of_universe);
+
+                    // this makes no sense, just a demo of something weird
+                    char nul_byte = '\0';
+                    int care_percentage = bugs * nul_byte;
+                        printf("Which means you should care %d%%.\n", care_percentage);
+
+                    return 0;
+                }
+            </textarea>
             </div>
-            <div id="tabs-2">
             </div>
             <div id="tabs-3">
             </div>
@@ -154,9 +143,6 @@
             </div>
         </div>
     </div>
-    <footer><a href="mailto:Bunchhieng@gmail.com">Feel free to ask me any questions!</a>
-        <br>Bunchhieng Soth
-    </footer>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'bunchhienggithubiolearn2code'; // required: replace example with your forum shortname
