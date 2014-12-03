@@ -96,6 +96,24 @@ Run it with: $ ./helloWorld
                 <div id="tabs-2">
                     <h3>Variables, Some Math and Arrays</h3>
                     <p style="font-size:17px">December 2nd 2014</p>
+                    <p>How to read input from user with scanf("%d", &amp;number);</p>
+                    <textarea class="c-code">
+#include &lt;stdio.h>
+int main(int argc, char *argv[]) 
+{
+    int number;
+    printf("Please enter a number: ");
+    
+    scanf("%d", &amp;number);
+    
+    printf("You entered %d", number);
+    
+    // The program will close after pressing enter
+    getchar();
+    
+    return 0;
+}
+                    </textarea>
                     <h2>Example 1</h2>
                     <textarea class="c-code">
 #include &lt;stdio.h&gt;
